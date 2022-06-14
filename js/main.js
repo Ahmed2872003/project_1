@@ -68,13 +68,15 @@ window.onscroll = function () {
   /*start stat*/
   if (this.scrollY > stat_sec.offsetTop - 60) {
     if (decision == true) {
-      setInterval(() => {
+      let intevral = setInterval(counter, 0.5);
+      function counter() {
         count++;
         if (count <= 150) stat[0].innerHTML = count;
         if (count <= 300) stat[1].innerHTML = count;
         if (count <= 550) stat[2].innerHTML = count;
         if (count <= 700) stat[3].innerHTML = count;
-      }, 0.5);
+        if (count > 700) clearInterval(intevral);
+      }
     }
     decision = false;
   }
