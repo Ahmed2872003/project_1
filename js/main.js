@@ -15,36 +15,21 @@ click.onclick = function () {
 /*end with header click*/
 
 /*time counter in sec_10*/
-let D = document.querySelector(".Days"),
-  H = document.querySelector(".Hours"),
-  M = document.querySelector(".Minutes"),
-  S = document.querySelector(".Seconds"),
-  cD = 339, // 339
-  cH = 23, // 23
-  cM = 59, //
-  cS = 59;
-intevral = setInterval(time, 1000);
-function time() {
-  cS--;
-  if (cS == 0) {
-    cS = 59;
-    cM--;
-  }
-  if (cM == 0) {
-    cM = 59;
-    cH--;
-  }
-  if (cH == 0) {
-    cH = 23;
-    cD--;
-  }
+let time = document.querySelectorAll(".time");
+let countDown = new Date("12/31/2022 23:59:59");
 
-  D.innerHTML = cD;
-  H.innerHTML = cH;
-  M.innerHTML = cM;
-  S.innerHTML = cS;
-  if (cD == 0) clearInterval(intevral);
-}
+let intevral = setInterval(() => {
+  let diff = countDown.getTime() - new Date().getTime();
+  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  time[0].innerHTML = days < 10 ? `0${days}` : days;
+  time[1].innerHTML = hours < 10 ? `0${hours}` : hours;
+  time[2].innerHTML = minutes < 10 ? `0${minutes}` : minutes;
+  time[3].innerHTML = seconds < 10 ? `0${seconds}` : seconds;
+  if (diff <= 0) clearInterval(intevral);
+}, 1000);
 
 /*end of counter */
 /*start moving skills*/
