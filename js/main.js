@@ -16,7 +16,7 @@ click.onclick = function () {
 
 /*time counter in sec_10*/
 let time = document.querySelectorAll(".time");
-let countDown = new Date("12/31/2022 23:59:59");
+let countDown = new Date("12/31/2023 23:59:59");
 
 let intevral = setInterval(() => {
   let diff = countDown.getTime() - new Date().getTime();
