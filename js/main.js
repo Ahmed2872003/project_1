@@ -20,7 +20,7 @@ let countDown = new Date("12/31/2022 23:59:59");
 
 let intevral = setInterval(() => {
   let diff = countDown.getTime() - new Date().getTime();
-  if (diff <= 0) clearInterval(intevral);
+  if (diff <= 0) {clearInterval(intevral);return;}
   let days = Math.floor(diff / (1000 * 60 * 60 * 24));
   let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
